@@ -1,52 +1,68 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <fstream>
+#include <cctype>
+#include <string>
+#include <vector>
+#include <algorithm> 
+
+
 using namespace std;
 
-// Definición de vectores que contienen palabras clave, operadores, números, paréntesis y corchetes
-vector<string> demo = {
-    "auto",   "break",   "case",  "char",     "const",  "continue", "default",
-    "do",     "double",  "else",  "enum",     "extern", "float",    "for",
-    "goto",   "if",      "int",   "signed",   "sizeof", "static",   "struct",
-    "switch", "typedef", "union", "unsigned", "void",   "volatile", "while"};
+// Definir tipos de token
+enum class TokenType {
+    KEYWORD, IDENTIFIER, NUMBER, SYMBOL, UNKNOWN
+};
 
-vector<string> hello = {"-", "*", "=", "+", "/"};
+// Estructura para representar tokens
+struct Token {
+    TokenType type;
+    string value;
+};
 
-vector<string> ten = {"67", "87", "5", "12", "90"};
+// Función para clasificar palabras
+TokenType identifyToken(const string& word) {
+    // Palabras clave
+    const vector<string> keywords = {"if", "else", "while", "return"};
 
-vector<string> parenthesis = {"(", ")"};
+    // Verificar si es una palabra clave
+    for (const string& keyword : keywords) {
+        if (word == keyword) return TokenType::KEYWORD;
+    }
 
-vector<string> brackets = {"[", "]"};
+    // Verificar si es un número (simplificación: solo enteros)
+    if (all_of(word.begin(), word.end(), ::isdigit)) return TokenType::NUMBER;
 
-// Función para imprimir el tipo de token de una cadena dada
-void printout(string q) {
-  // Manejar caso de cadena vacía
-  if (q.empty()) return;
+    // Verificar si es un símbolo
+    if (word.size() == 1 && string("+-*/").find(word) != string::npos) return TokenType::SYMBOL;
 
-  // Determinar el tipo de token y mostrarlo en la salida estándar
-  if (find(demo.begin(), demo.end(), q) != demo.end())
-    cout << q << " \t keyword\n";
-  else if (find(hello.begin(), hello.end(), q) != hello.end())
-    cout << q << " \t operator\n";
-  else if (find(ten.begin(), ten.end(), q) != ten.end())
-    cout << q << " \t number\n";
-  else if (find(parenthesis.begin(), parenthesis.end(), q) != parenthesis.end())
-    cout << q << " \t parenthesis\n";
-  else if (find(brackets.begin(), brackets.end(), q) != brackets.end())
-    cout << q << " \t separator\n"; // Corregir el término "separator"
-  else
-    cout << q << " \t unknown\n"; // Manejar casos desconocidos
+    // Por default, es un identificador
+    return TokenType::IDENTIFIER;
 }
 
+// Función principal
 int main() {
-  string line;
-  vector<string> sample;
+    ifstream file("input.txt");
+    string word;
+    vector<Token> tokens;
 
-  // Leer la entrada estándar y dividirla en tokens separados por espacios
-  while (getline(cin, line, ' ')) {
-    sample.push_back(line);
-  }
-  
-  // Iterar sobre los tokens y determinar su tipo
-  for (auto q : sample) printout(q);
+    // Leer cada palabra del archivo
+    while (file >> word) {
+        Token token = {identifyToken(word), word};
+        tokens.push_back(token);
+    }
 
-  return 0;
+    // Imprimir los tokens identificados
+    for (const Token& token : tokens) {
+        cout << "Token: " << token.value << ", Tipo: ";
+        switch (token.type) {
+            case TokenType::KEYWORD: cout << "Palabra clave"; break;
+            case TokenType::IDENTIFIER: cout << "Identificador"; break;
+            case TokenType::NUMBER: cout << "Número"; break;
+            case TokenType::SYMBOL: cout << "Símbolo"; break;
+            default: cout << "Desconocido"; break;
+        }
+        cout << endl;
+    }
+
+    return 0;
 }
