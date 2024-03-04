@@ -21,7 +21,7 @@ struct Token {
 // Función para clasificar palabras
 TokenType identifyToken(const string& word) {
     // Palabras clave
-    const vector<string> keywords = {"if", "else", "while", "return"}; // Lista de palabras clave.
+    const vector<string> keywords = {"if", "else", "while", "return", "for", "switch", "break"}; // Lista de palabras clave.
 
     // Verificar si es una palabra clave
     for (const string& keyword : keywords) { // Recorre la lista de palabras clave.
@@ -45,7 +45,7 @@ int main() {
     vector<Token> tokens; // Vector para almacenar los tokens identificados.
 
     // Leer cada palabra del archivo
-    while (file >> word) { // Mientras haya palabras para leer en el archivo...
+    while (file >> word) { //leer en el archivo...
         Token token = {identifyToken(word), word}; // Crea un token con el tipo y valor identificados.
         tokens.push_back(token); // Añade el token al vector de tokens.
     }
