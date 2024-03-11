@@ -1,8 +1,11 @@
-Hola mundo 123
-* 
-/
-@
+#incluide <iostream>
+#incluide <string>
+
+int main() {
+cout << "hola" <<endl;
+}
 
 for
-if 
-while
+123
+else
+/
