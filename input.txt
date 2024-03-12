@@ -5,6 +5,10 @@ int main() {
 cout << "hola" <<endl;
 }
 
+<<
+>>
+>=
+|
 for
 123
 else
