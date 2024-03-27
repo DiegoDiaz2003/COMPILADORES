@@ -1,0 +1,41 @@
+%token IDENTIFIER NUMBER
+%token PLUS MINUS MULTIPLY DIVIDE ASSIGN
+%token SEMICOLON COMMA
+%token LPAREN RPAREN LBRACE RBRACE
+
+%%
+program:
+    statement_list
+;
+
+statement_list:
+    statement
+    | statement_list statement
+;
+
+statement:
+    expression_statement
+    | compound_statement
+;
+
+expression_statement:
+    expression SEMICOLON
+;
+
+expression:
+    IDENTIFIER ASSIGN expression
+    | expression PLUS expression
+    | expression MINUS expression
+    | term
+;
+
+term:
+    NUMBER
+    | IDENTIFIER
+    | LPAREN expression RPAREN
+;
+
+compound_statement:
+    LBRACE statement_list RBRACE
+;
+%%
