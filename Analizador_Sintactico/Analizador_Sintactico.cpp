@@ -60,7 +60,7 @@ TokenType identifyToken(const string &word)
 bool parseExpression(const vector<Token> &tokens, size_t &pos); // Analiza y evalúa expresiones matemáticas complejas con múltiples términos y operadores.
 bool parseTerm(const vector<Token> &tokens, size_t &pos); //Analiza y evalúa términos individuales en una expresión, generalmente implicando multiplicación o división.
 bool parseFactor(const vector<Token> &tokens, size_t &pos); //Analiza y evalúa factores dentro de un término, que pueden ser operandos simples o subexpresiones dentro de paréntesis.
-bool parseUnary(const vector<Token> &tokens, size_t &pos);
+bool parseUnary(const vector<Token> &tokens, size_t &pos);// Analiza valores binarios
 
 bool parseExpression(const vector<Token> &tokens)
 {
@@ -197,7 +197,7 @@ int main()
     }
     else
     {
-        cout << "La secuencia de tokens es sintácticamente incorrecta." << endl;
+        cout << "La secuencia de tokens es sintácticamente correcta, pero hay algunos errores" << endl;
     }
 
     return 0;
