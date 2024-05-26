@@ -1,0 +1,13 @@
+int main() {
+    int x = 21;
+    string y = "Diego";
+    if (x > 10) {
+        x = x + 1;
+    } else {
+        x = x - 1;
+    }
+    while (x < 30) {
+        x = x + 2;
+    }
+    return x;
+}
