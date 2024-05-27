@@ -15,7 +15,7 @@ enum class TokenType
     NUMBER,
     SYMBOL,
     UNKNOWN
-}; // Define un tipo enumerado para los distintos tipos de tokens.
+}; // Define un tipo enumerado para los diferentes tipos de tokens.
 
 // Estructura para representar tokens
 struct Token
@@ -24,7 +24,7 @@ struct Token
     string value;   // Valor textual del token.
 };                  // Define una estructura Token con un tipo y valor.
 
-// Función para clasificar palabras
+// Función para clasificar las palabras
 TokenType identifyToken(const string &word)
 {
     // Palabras clave
@@ -52,7 +52,7 @@ TokenType identifyToken(const string &word)
 // Función principal
 int main()
 {
-    ifstream file("input.txt"); // Abre el archivo input.txt para lectura.
+    ifstream file("input.txt"); // Abre el archivo input.txt para analizar.
     string word;                // Variable para almacenar cada palabra leída del archivo.
     vector<Token> tokens;       // Vector para almacenar los tokens identificados.
 

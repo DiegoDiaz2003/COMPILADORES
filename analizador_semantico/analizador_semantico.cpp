@@ -198,7 +198,7 @@ public:
 bool parseExpression(const vector<Token> &tokens, size_t &pos); // Analiza y evalúa expresiones matemáticas complejas con múltiples términos y operadores.
 bool parseTerm(const vector<Token> &tokens, size_t &pos); //Analiza y evalúa términos individuales en una expresión, generalmente implicando multiplicación o división.
 bool parseFactor(const vector<Token> &tokens, size_t &pos); //Analiza y evalúa factores dentro de un término, que pueden ser operandos simples o subexpresiones dentro de paréntesis.
-bool parseUnary(const vector<Token> &tokens, size_t &pos);// Analiza valores binarios
+bool parseUnary(const vector<Token> &tokens, size_t &pos);// Analiza valores binarios.
 
 
 bool parseExpression(const vector<Token> &tokens) {
