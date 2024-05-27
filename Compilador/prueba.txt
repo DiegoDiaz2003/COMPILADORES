@@ -1,5 +1,5 @@
 int main() {
-    int x = 21;
+    int x = 22;
     string y = "Diego";
     if (x > 10) {
         x = x + 1;
@@ -11,3 +11,4 @@ int main() {
     }
     return x;
 }
+
