@@ -6,6 +6,7 @@
 #include <memory>
 #include <unordered_map>
 #include <algorithm>
+#include <iomanip>
 
 using namespace std;
 
@@ -261,13 +262,13 @@ public:
     }
 
     void imprimir_tabla_simbolos() {
-        cout << "Tabla de Símbolos:" << endl;
+        cout << "------- Tabla de Símbolos ----------" << endl;
         for (const auto& simbolo : tabla_simbolos) {
-            cout << "Variable: " << simbolo.variable << ", Tipo: " << simbolo.tipo << ", Ámbito: " << simbolo.ambito << endl;
+            cout << "|   Variable:   | " << simbolo.variable << "   |    Tipo:   |   " << simbolo.tipo << "|     Ámbito:      |" << simbolo.ambito << endl;
         }
-        cout << "Funciones:" << endl;
+        cout << "------- Funciones --------" << endl;
         for (const auto& funcion : funciones) {
-            cout << "Función: " << funcion.nombre << ", Tipo de Retorno: " << funcion.tipo << endl;
+            cout << "|     Función:      |" << funcion.nombre << "|      Tipo de Retorno:      |" << funcion.tipo << endl;
         }
     }
 };
